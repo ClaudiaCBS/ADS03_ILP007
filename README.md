@@ -22,94 +22,77 @@ Repositório para as atividades em DUPLA da disciplina Programação Orientada a
 
 
 
-🔖 ATIVIDADE 1 ([Link da Pasta](01_PL_Atividade)):  Concluído :white_check_mark:
+:zap: Atividade 01 ([Link da Pasta](01_PL_Atividade)):  Metade Concluído :white_check_mark:
 
-🔖 ATIVIDADE 2 ([Link da Pasta](02_PL_Atividade)):  Concluído :white_check_mark:
+:sparkles: Atividade 02 ([Link da Pasta](02_PL_Atividade)):  Concluído :white_check_mark:
 
-🔖 ATIVIDADE 3 ([Link da Pasta](03_PL_Atividade)):  Concluído :white_check_mark:
+:zap: Atividade 03 ([Link da Pasta](03_PL_Atividade)):  Concluído :white_check_mark:
 
-🔖 ATIVIDADE 4 ([Link da Pasta](04_PL_Atividade)):  Em Andamento :construction:
+:sparkles: Atividade 04 ([Link da Pasta](04_PL_Atividade)):  Em Andamento :construction:
 
-🔖 ATIVIDADE 5 ([Link da Pasta](05_PL_Atividade)):  Em Andamento :construction:
+:zap: Atividade 05 ([Link da Pasta](05_PL_Atividade)):  Em Andamento :construction:
 
 <br>
 
 <span id="1">
 
-## Lista I
+## :rocket: Lista I
 
 #### Primeiro projeto do PL é do tipo cli (command-line interface) com cadastros dos clientes e seus respectivos pets, produtos, serviços e listagens de negócios.
 Para rodar o programa deve usar os comandos: 
 
 ```cmd
-cd atvi-pl-typescript
+cd 01_PL_Atividade
 tsc
 node out/app/main.js
 ```
 
 <span id="2">
 
-## Lista II
+## :rocket: Lista II
 
 #### Segundo projeto do PL tem o objetivo de desenvolver interfaces gráficas (sem vínculo algum com aplicação back-end) trabalhando com classes no TypeScript.
 Para rodar o programa deve usar os comandos: 
 
 ```cmd
-cd atvii-pl-typescript
+cd 02_PL_Atividade
 npm run start
 ```
 
 <span id="3">
 
-## Lista III
+## :rocket: Lista III
 
 #### Terceiro projeto do PL tem o objetivo de desenvolver interfaces gráficas (sem vínculo algum com aplicação back-end) trabalhando com funções no TypeScript.
 Para rodar o programa deve usar os comandos: 
 
 ```cmd
-cd atviii-pl-typescript
+cd 03_PL_Atividade
 npm run start
 ```
 
 <span id="4">
 
-## Lista IV
+## :rocket: Lista IV
 
-#### Projeto para a integração da interface com um backend previamente disponibilizado (apenas clientes).
+#### Quarto projeto do PL tem o objetivo de fazer a integração da interface gráfica desenvolvida no terceiro projeto com um back-end.
 Para rodar o programa deve usar os comandos: 
 
-(Server)
 ```cmd
-cd atviv-pl-typescript
-cd executavel
-java -jar wbbackend.jar
+cd 04_PL_Atividade
+npm run start
 ```
 
-(Client)
-```cmd
-cd atviv-pl-typescript. 
-cd client
-npm start
-```
 
 <span id="5">
 
-## Lista V
+## :rocket: Lista V
 
-#### Finalização do projeto iniciado na lista I, unindo a interface com um backend desenvolvido pela equipe para atender não somente aos clientes, mas aos produtos e serviços também, feito em express.
+#### Quinto projeto do PL é a finalização do projeto iniciado na lista I, criando uma interface gráfica e integrando com um back-end.
 Para rodar o programa deve usar os comandos: 
 
-(Server)
 ```cmd
-cd atvv-pl-typescript
-cd server
-npm run dev
-```
-
-(Client)
-```cmd
-cd atvv-pl-typescript. 
-cd client
-npm start
+cd 05_PL_Atividade
+npm run start
 ```
 
