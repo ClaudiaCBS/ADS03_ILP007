@@ -1,0 +1,31 @@
+produto:
+- nome;
+- preço;
+
+serviço:
+- nome;
+- preço;
+
+cliente: 
+- nome;
+- nome social;
+- cpf;
+- rg[];
+- telefones[];
+- pets[];
+
+pets:
+- nome;
+- raça;
+- genero;
+- tipo;
+
+
+
+
+
+listagem:
+- 10 clientes que mais consumiram em quantidade;
+- listagem geral de produtos e serviços mais consumidos;
+- listagem dos serviços e produtos mais consumidos por tipo e raça de pet;
+- listagem de 5 clientes que mais consumiram em valor e não quantidade;
