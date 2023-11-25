@@ -22,13 +22,13 @@ Repositório para as atividades em DUPLA da disciplina Programação Orientada a
 
 
 
-:zap: Atividade 01 ([Link da Pasta](01_PL_Atividade)):  Metade Concluído :white_check_mark:
+:zap: Atividade 01 ([Link da Pasta](01_PL_Atividade)):  Parcialmente Concluído :test_tube:
 
 :sparkles: Atividade 02 ([Link da Pasta](02_PL_Atividade)):  Concluído :white_check_mark:
 
 :zap: Atividade 03 ([Link da Pasta](03_PL_Atividade)):  Concluído :white_check_mark:
 
-:sparkles: Atividade 04 ([Link da Pasta](04_PL_Atividade)):  Em Andamento :construction:
+:sparkles: Atividade 04 ([Link da Pasta](04_PL_Atividade)):  Concluído :white_check_mark:
 
 :zap: Atividade 05 ([Link da Pasta](05_PL_Atividade)):  Em Andamento :construction:
 
@@ -43,6 +43,7 @@ Para rodar o programa deve usar os comandos:
 
 ```cmd
 cd 01_PL_Atividade
+npm install
 tsc
 node out/app/main.js
 ```
@@ -56,6 +57,7 @@ Para rodar o programa deve usar os comandos:
 
 ```cmd
 cd 02_PL_Atividade
+npm install
 npm run start
 ```
 
@@ -68,6 +70,7 @@ Para rodar o programa deve usar os comandos:
 
 ```cmd
 cd 03_PL_Atividade
+npm install
 npm run start
 ```
 
@@ -76,11 +79,19 @@ npm run start
 ## :rocket: Lista IV
 
 #### Quarto projeto do PL tem o objetivo de fazer a integração da interface gráfica desenvolvida no terceiro projeto com um back-end.
-Para rodar o programa deve usar os comandos: 
+Para rodar o front-end do programa deve usar os comandos: 
 
 ```cmd
 cd 04_PL_Atividade
+npm install
 npm run start
+```
+
+Para rodar o back-end do programa deve usar os comandos: 
+
+```cmd
+cd 04_PL_Atividade\backend\executavel\
+java -jar pl.jar
 ```
 
 
@@ -89,10 +100,19 @@ npm run start
 ## :rocket: Lista V
 
 #### Quinto projeto do PL é a finalização do projeto iniciado na lista I, criando uma interface gráfica e integrando com um back-end.
-Para rodar o programa deve usar os comandos: 
+Para rodar o front-end do programa deve usar os comandos: 
 
 ```cmd
 cd 05_PL_Atividade
+npm install
 npm run start
 ```
+
+Para rodar o back-end do programa deve usar os comandos: 
+
+```cmd
+cd 05_PL_Atividade\backend\executavel\
+java -jar pl.jar
+```
+
 
