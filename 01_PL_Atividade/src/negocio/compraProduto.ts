@@ -30,8 +30,19 @@ export default class CompraProduto extends Compra {
             return
         } 
 
+        let indexProduto = this.produtos.indexOf(produto[0])
+
         let quantidade = this.entrada.receberNumero(`Digite a quantidade do produto: `)
         let consumo = new Consumo(produto[0].nome, quantidade*produto[0].preco, quantidade)
         cliente[0].getProdutosConsumidos.push(consumo)
+
+        //editar o produto na quantidade
+        produto[0].quantidadeVendida += quantidade
+
+        //atualizar o produto na lista (primeiro remove e depois adiciona)
+        this.produtos.splice(indexProduto, 1)
+        this.produtos.push(produto[0])
+        
+
     }
 }
