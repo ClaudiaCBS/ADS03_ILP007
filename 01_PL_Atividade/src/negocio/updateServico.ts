@@ -3,7 +3,6 @@ import Servico from "../modelo/servico";
 import Update from "./update";
 
 
-
 //criei essa classe
 export default class UpdateServico extends Update {
     private servicos: Array<Servico>
@@ -14,7 +13,9 @@ export default class UpdateServico extends Update {
         this.entrada = new Entrada()
     }
     public update(): void {
+        console.log(`-----------------------------------`)
         console.log(`\nEdição do serviço`)
+        console.log(`-----------------------------------`)
         let busca = this.entrada.receberTexto(`Digite o nome do serviço: `)
         let servico = this.servicos.filter(b => b.nome === busca)
         if (!servico || servico.length === 0){

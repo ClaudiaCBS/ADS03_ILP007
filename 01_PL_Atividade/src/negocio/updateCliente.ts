@@ -3,7 +3,6 @@ import Cliente from "../modelo/cliente";
 import Pet from "../modelo/pet";
 import RG from "../modelo/rg";
 import Telefone from "../modelo/telefone";
-import CadastroCliente from "./cadastroCliente";
 import Update from "./update";
 
 
@@ -17,7 +16,9 @@ export default class UpdateCliente extends Update {
         this.entrada = new Entrada()
     }
     public update(): void {
+        console.log(`-----------------------------------`)
         console.log(`\nEdição de cliente`)
+        console.log(`-----------------------------------`)
         let busca = this.entrada.receberTexto(`Digite o nome do cliente: `)
         let cliente = this.clientes.filter(b => b.nome === busca)
         if (!cliente || cliente.length === 0){

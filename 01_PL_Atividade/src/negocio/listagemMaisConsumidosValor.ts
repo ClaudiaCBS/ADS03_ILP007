@@ -26,12 +26,15 @@ export default class ListagemMaisConsumidosValor extends Listagem {
                 return 1
             }
             return 0
+
+        console.log(`--------------------------------------------------------------------`)
+
         }).reverse().forEach(item => {
             if(posicao <= 5){
                 let valorConsumido = 0
                 item.getProdutosConsumidos.forEach(i => valorConsumido += i.valor)
                 item.getServicosConsumidos.forEach(i => valorConsumido += i.valor)
-                console.log(`${posicao}º Cliente: ${item.nome} , Valor Total: ${valorConsumido}`)
+                console.log(`${posicao}º Cliente: ${item.nome}   |   Valor Total: ${valorConsumido}`)
             }
             posicao++;
         })

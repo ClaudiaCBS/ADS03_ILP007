@@ -11,7 +11,9 @@ export default class CadastroServico extends Cadastro {
         this.entrada = new Entrada()
     }
     public cadastrar(): void {
+        console.log(`--------------------------------------------------------------------`)
         console.log(`\nInício do cadastro do serviço`);
+        console.log(`--------------------------------------------------------------------`)
         let nome = this.entrada.receberTexto(`Por favor informe o nome do serviço: `)
         let preco = this.entrada.receberNumero(`Por favor informe o preço do serviço: `)
         let servico = new Servico(nome, preco);

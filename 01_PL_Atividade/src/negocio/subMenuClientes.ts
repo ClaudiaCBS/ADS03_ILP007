@@ -16,7 +16,9 @@ export default class SubMenuClientes extends SubMenu {
     public opcoes(): void {
         let execucao = true
         while (execucao){
+            console.log(`-----------------------------------`)
             console.log(`Opções CRUD do Cliente`);
+            console.log(`-----------------------------------`)
             console.log(`1 - Cadastrar cliente`);
             console.log(`2 - Listar todos os clientes`);
             console.log(`3 - Editar dados do clientes`);

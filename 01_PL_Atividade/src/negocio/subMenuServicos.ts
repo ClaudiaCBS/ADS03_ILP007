@@ -16,7 +16,9 @@ export default class SubMenuServicos extends SubMenu {
     public opcoes(): void {
         let execucao = true
         while (execucao){
+            console.log(`-----------------------------------`)
             console.log(`Opções CRUD do Serviço`);
+            console.log(`-----------------------------------`)
             console.log(`1 - Cadastrar serviço`);
             console.log(`2 - Listar todos os serviços`);
             console.log(`3 - Editar dados do serviços`);

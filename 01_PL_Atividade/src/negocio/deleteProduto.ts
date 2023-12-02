@@ -1,7 +1,6 @@
 import Entrada from "../io/entrada";
 import Produto from "../modelo/produto";
 import Delete from "./delete";
-import Update from "./update";
 
 
 //criei essa classe
@@ -14,7 +13,9 @@ export default class DeleteProduto extends Delete {
         this.entrada = new Entrada()
     }
     public delete(): void {
+        console.log(`--------------------------------------------------------------------`)
         console.log(`\nDeletar produto`)
+        console.log(`--------------------------------------------------------------------`)
         let busca = this.entrada.receberTexto(`Digite o nome do produto: `)
         let produto = this.produtos.filter(b => b.nome === busca)
         if (!produto || produto.length === 0){

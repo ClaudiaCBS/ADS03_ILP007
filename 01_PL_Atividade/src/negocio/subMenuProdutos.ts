@@ -16,7 +16,9 @@ export default class SubMenuProdutos extends SubMenu {
     public opcoes(): void {
         let execucao = true
         while (execucao){
+            console.log(`-----------------------------------`)
             console.log(`Opções CRUD do Produto`);
+            console.log(`-----------------------------------`)
             console.log(`1 - Cadastrar produto`);
             console.log(`2 - Listar todos os produtos`);
             console.log(`3 - Editar dados do produto`);

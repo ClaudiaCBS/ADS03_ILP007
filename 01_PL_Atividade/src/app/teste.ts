@@ -1,10 +1,9 @@
 import Cliente from "../modelo/cliente";
 import CPF from "../modelo/cpf";
 import Produto from "../modelo/produto";
-import RG from "../modelo/rg";
 import Servico from "../modelo/servico";
-import Telefone from "../modelo/telefone";
 
+// lista criada para executar os casos de testes
 export default class TestesValidarLista{
 
     public clientes: Array<Cliente>
@@ -51,34 +50,47 @@ export default class TestesValidarLista{
         this.clientes.push(new Cliente('Zacarias', 'Aline', new CPF('12448918007', new Date())))
 
         //Produtos
-        this.produtos.push(new Produto('Esmalte Lilas', 5))
-        this.produtos.push(new Produto('Shampoo', 4))
-        this.produtos.push(new Produto('Condicionador', 6))
-        this.produtos.push(new Produto('Creme Hidratante', 15))
-        this.produtos.push(new Produto('Escova', 17))
-        this.produtos.push(new Produto('Pasta de Dente', 20))
-        this.produtos.push(new Produto('Fio Dental', 10))
-        this.produtos.push(new Produto('Agua Sanitaria', 13))
-        this.produtos.push(new Produto('Tinta para Cabelos', 1))
-        this.produtos.push(new Produto('Pente', 5))
-        this.produtos.push(new Produto('Tesoura', 20))
-        this.produtos.push(new Produto('Caderno', 7))
-        this.produtos.push(new Produto('Bolacha', 80))
-        this.produtos.push(new Produto('Caneta', 35))
-        this.produtos.push(new Produto('Lapis', 15))
-        this.produtos.push(new Produto('Borracha', 2))
-        this.produtos.push(new Produto('Cafe', 3))
-        this.produtos.push(new Produto('Leite Vegetal', 3))
-        this.produtos.push(new Produto('Fruta', 25))
-        this.produtos.push(new Produto('Kombucha', 5))
+        this.produtos.push(new Produto('Esmalte Dog', 5))
+        this.produtos.push(new Produto('Esmalte Cat', 4))
+        this.produtos.push(new Produto('Shampoo Dog', 6))
+        this.produtos.push(new Produto('Condicionador Dog', 7))
+        this.produtos.push(new Produto('Shampoo Cat', 8))
+        this.produtos.push(new Produto('Condicionador Cat', 9))
+        this.produtos.push(new Produto('Escova Dog', 10))
+        this.produtos.push(new Produto('Escova Cat', 11))
+        this.produtos.push(new Produto('Lacinho Dog', 1))
+        this.produtos.push(new Produto('Lacinho Cat', 2))
+        this.produtos.push(new Produto('Pente Dog', 12))
+        this.produtos.push(new Produto('Pente Cat', 13))
+        this.produtos.push(new Produto('Fralda Dog', 40))
+        this.produtos.push(new Produto('Fralda Cat', 50))
+        this.produtos.push(new Produto('Tapete Dog', 60))
+        this.produtos.push(new Produto('Tapete Cat', 70))
+        this.produtos.push(new Produto('Caixa Areia', 80))
+        this.produtos.push(new Produto('Areia', 90))
+        this.produtos.push(new Produto('Racao Dog', 100))
+        this.produtos.push(new Produto('Racao Cat', 110))
         
         //Serviços
-        this.servicos.push(new Servico('Lavar Roupa', 30))
-        this.servicos.push(new Servico('Passar Roupa', 40))
-        this.servicos.push(new Servico('Manicure', 30))
-        this.servicos.push(new Servico('Pedicure', 40))
-        this.servicos.push(new Servico('Massagem', 100))
-        this.servicos.push(new Servico('Depilação', 45))
-        this.servicos.push(new Servico('Cortar Cabelo', 25))
+        this.servicos.push(new Servico('Banho Dog', 30))
+        this.servicos.push(new Servico('Banho Cat', 40))
+        this.servicos.push(new Servico('Tosa Dog', 50))
+        this.servicos.push(new Servico('Tosa Cat', 60))
+        this.servicos.push(new Servico('Unha Dog', 20))
+        this.servicos.push(new Servico('Unha Cat', 25))
+        this.servicos.push(new Servico('Massagem Dog', 70))
+        this.servicos.push(new Servico('Massagem Cat', 80))
+        this.servicos.push(new Servico('Veterinario Dog', 100))
+        this.servicos.push(new Servico('Veterinario Cat', 110))
+        this.servicos.push(new Servico('Exame Sangue Dog', 120))
+        this.servicos.push(new Servico('Exame Sangue Cat', 130))
+        this.servicos.push(new Servico('Tratar Dente Dog', 140))
+        this.servicos.push(new Servico('Tratar Dente Cat', 150))
+        this.servicos.push(new Servico('Adestrar Dog', 160))
+        this.servicos.push(new Servico('Adestrar Cat', 170))
+        this.servicos.push(new Servico('Castrar Dog', 180))
+        this.servicos.push(new Servico('Castrar Cat', 190))
+        this.servicos.push(new Servico('Hotelzinho Dog', 200))
+        this.servicos.push(new Servico('Hotelzinho Cat', 210))
     }
 }

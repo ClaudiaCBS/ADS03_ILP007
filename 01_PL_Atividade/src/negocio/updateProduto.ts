@@ -13,7 +13,9 @@ export default class UpdateProduto extends Update {
         this.entrada = new Entrada()
     }
     public update(): void {
+        console.log(`-----------------------------------`)
         console.log(`\nEdição do produto`)
+        console.log(`-----------------------------------`)
         let busca = this.entrada.receberTexto(`Digite o nome do produto: `)
         let produto = this.produtos.filter(b => b.nome === busca)
         if (!produto || produto.length === 0){

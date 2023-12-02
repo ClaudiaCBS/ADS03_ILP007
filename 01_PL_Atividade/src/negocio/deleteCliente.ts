@@ -1,11 +1,7 @@
 import Entrada from "../io/entrada";
 import Cliente from "../modelo/cliente";
-import Pet from "../modelo/pet";
-import RG from "../modelo/rg";
-import Telefone from "../modelo/telefone";
-import CadastroCliente from "./cadastroCliente";
 import Delete from "./delete";
-import Update from "./update";
+
 
 
 //criei essa classe
@@ -18,7 +14,9 @@ export default class DeleteCliente extends Delete {
         this.entrada = new Entrada()
     }
     public delete(): void {
+        console.log(`--------------------------------------------------------------------`)
         console.log(`\nDeletar cliente`)
+        console.log(`--------------------------------------------------------------------`)
         let busca = this.entrada.receberTexto(`Digite o nome do cliente: `)
         let cliente = this.clientes.filter(b => b.nome === busca)
         if (!cliente || cliente.length === 0){

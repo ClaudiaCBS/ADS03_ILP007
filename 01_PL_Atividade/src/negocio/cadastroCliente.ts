@@ -15,7 +15,9 @@ export default class CadastroCliente extends Cadastro {
         this.entrada = new Entrada()
     }
     public cadastrar(): void {
+        console.log(`--------------------------------------------------------------------`)
         console.log(`\nInício do cadastro do cliente`);
+        console.log(`--------------------------------------------------------------------`)
         let nome = this.entrada.receberTexto(`Por favor informe o nome do cliente: `)
         let nomeSocial = this.entrada.receberTexto(`Por favor informe o nome social do cliente: `)
         let valor = this.entrada.receberTexto(`Por favor informe o número do cpf: `);
@@ -42,14 +44,20 @@ export default class CadastroCliente extends Cadastro {
         let numeroTelefone = this.entrada.receberTexto(`Por favor informe o numero de telefone: `);
         let telefone = new Telefone(ddd, numeroTelefone)
         cliente.getTelefones.push(telefone)
-        //incluir o pet do cliente
+        //incluindo pet do cliente
+        console.log(`--------------------------------------------------------------------`)
+        
         let incluirPet = this.entrada.receberTexto(`Deseja incluir pet: S/N `);
-        if (incluirPet === `S`){
+        
+        console.log(`--------------------------------------------------------------------`)
+        if (incluirPet === 'S' || 's'){
             let criacaoPet = true;
             while (criacaoPet){
+                console.log(`--------------------------------------------------------------------`)
                 console.log(`Digite 1 para adicionar um pet`);
                 console.log(`Digite 0 para concluir`);
                 let opcao = this.entrada.receberNumero(`Por favor informe a opção: `);
+                console.log(`--------------------------------------------------------------------`)
                 if (opcao === 1){
                     let nomePet = this.entrada.receberTexto(`Informe o nome do pet: `);
                     let tipoPet = this.entrada.receberTexto(`Informe o tipo do pet: `);

@@ -19,14 +19,17 @@ export default class ListagemProdutosServicosMaisConsumidos extends Listagem {
                 return 1
             }
             return 0  
+
+        console.log(`--------------------------------------------------------------------`)
+
         }).reverse().forEach(item => {
-            console.log(`${posicao}º Produto: ${item.nome} , Quantidade: ${item.quantidadeVendida}`)
+            console.log(`${posicao}º Produto: ${item.nome}   |   Quantidade: ${item.quantidadeVendida}`)
             posicao++;
         })
 
         posicao = 1
 
-        console.log(`--------------------------------------------------`)
+        console.log(`----------------------------------------------------`)
 
         let servicos = this.empresa.getServicos
         servicos.sort(function compare(a, b): number {
@@ -38,7 +41,7 @@ export default class ListagemProdutosServicosMaisConsumidos extends Listagem {
             }
             return 0  
         }).reverse().forEach(item => {
-            console.log(`${posicao}º Serviço: ${item.nome} , Quantidade: ${item.quantidadeVendida}`)
+            console.log(`${posicao}º Serviço: ${item.nome}   |   Quantidade: ${item.quantidadeVendida}`)
             posicao++;
         })
     }
