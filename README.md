@@ -22,7 +22,7 @@ Repositório para as atividades em DUPLA da disciplina Programação Orientada a
 
 
 
-:zap: Atividade 01 ([Link da Pasta](01_PL_Atividade)):  Parcialmente Concluído :test_tube:
+:zap: Atividade 01 ([Link da Pasta](01_PL_Atividade)):  Concluído :white_check_mark:
 
 :sparkles: Atividade 02 ([Link da Pasta](02_PL_Atividade)):  Concluído :white_check_mark:
 
