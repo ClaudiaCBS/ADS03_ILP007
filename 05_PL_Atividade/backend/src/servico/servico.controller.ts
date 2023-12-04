@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { ServicoService } from './servico.service';
 import { CreateServicoDto } from './dto/create-servico.dto';
-import { UpdateServicoDto } from './dto/update-servico.dto';
 
 @Controller('servico')
 export class ServicoController {
@@ -22,8 +21,8 @@ export class ServicoController {
     return this.servicoService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateServicoDto: UpdateServicoDto) {
+  @Put(':id')
+  update(@Param('id') id: string, @Body() updateServicoDto: CreateServicoDto) {
     return this.servicoService.update(+id, updateServicoDto);
   }
 

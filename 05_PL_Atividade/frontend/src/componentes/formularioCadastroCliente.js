@@ -1,225 +1,145 @@
 import { useState } from "react"
-// Navigate serve para navegar entre paginas
-import { useNavigate } from "react-router-dom"
-
-const clienteObj = {
-    nome: '',
-    nomeSocial: '', 
-    email: '', 
-    endereco: { 
-        estado: '',
-        cidade: '',
-        bairro: '',
-        rua: '',
-        numero: '',
-        codigoPostal: '',
-        informacoesAdicionais: '',
-    },
-    telefones: []
-}
+import * as clienteService from '../services/cliente.service'
 
 export default function FormularioCadastroCliente(props) {
-    // Declarou o State do Cliente
-    const [cliente, setCliente] = useState(clienteObj)
+    //Criei os States
+    const [rgs, setRgs] = useState([])
+    const [numeroRg, setNumeroRg] = useState('')
+    const [dataEmissao, setDataEmissao] = useState()
 
-    // Declarando a função navigate
-    const navigate = useNavigate()
+    const [telefones, setTelefones] = useState([])
+    const [ddd, setDdd] = useState('')
+    const [telefone, setTelefone] = useState('')
 
-    function adicionarTelefone(){
-        const telefones = [...cliente.telefones, { ddd: '', numero: ''} ]
-        setCliente({...cliente, telefones})
+    const [pets, setPets] = useState([])
+    const [generoPet, setGeneroPet] = useState('')
+    const [nomePet, setNomePet] = useState('')
+    const [raca, setRaca] = useState('')
+    const [tipo, setTipo] = useState('')
+
+
+    const [nome, setNome] = useState('')
+    const [nomeSocial, setNomeSocial] = useState('')
+    const [cpf, setCpf] = useState('')
+
+    let tema = props.tema
+
+    // Método executado ao clicar no botão de 'Adicionar RG' para incluir um novo RG ao state 'rgs'
+    function adicionarRG(evento) {
+        evento.preventDefault()
+
+        setRgs([...rgs, { dataEmissao: dataEmissao, rg: numeroRg }])
     }
 
-    // Função que valida os campos preenchidos
-    function validar(){
-        if(cliente.nome.trim().length === 0) return false
-        if(cliente.nomeSocial.trim().length === 0) return false
-        if(cliente.email.trim().length === 0) return false
-        if(cliente.endereco.codigoPostal.trim().length === 0) return false
-        if(cliente.endereco.bairro.trim().length === 0) return false
-        if(cliente.endereco.cidade.trim().length === 0) return false
-        if(cliente.endereco.estado.trim().length === 0) return false
-        if(cliente.endereco.numero.trim().length === 0) return false
-        if(cliente.endereco.rua.trim().length === 0) return false
-        if(cliente.telefones.length === 0) return false
+    // Método executado ao clicar no botão de 'Adicionar Telefone' para incluir um novo TELEFONE ao state 'telefones'
+    function adicionarTelefone(evento) {
+        evento.preventDefault()
 
-        cliente.telefones.forEach(t=> {
-            if(t.ddd.trim().length === 0) return false;
-            if(t.numero.trim().length === 0) return false;
-        })
-
-        return true;
+        setTelefones([...telefones, { ddd: ddd, telefone: telefone }])
     }
 
-    // Função que faz a requisição para salvar o cliente
-    function salvar(){
-        const isValid = validar()
-        if(!isValid){
-            alert('Preencha todos os campos obrigatórios!')
-            return;
+    // Método executado ao clicar no botão de 'Adicionar Pet' para incluir um novo PET ao state 'pets'
+    function adicionarPet(evento) {
+        evento.preventDefault()
+
+        setPets([...pets, { genero: generoPet, nome: nomePet, raca: raca, tipo: tipo }])
+    }
+
+    // Método executado ao digitar algo no input de nome de um pet para trocar seu nome no state
+    function mudarNomePet(novoNome, indexPet) {
+        const petArray = [...pets]
+        petArray[indexPet].nome = novoNome;
+
+        setPets(petArray)
+    }
+
+    function criarCliente() {
+        const cliente = {
+            nome: nome,
+            nomeSocial: nomeSocial,
+            cpf: cpf,
+            rgs: rgs,
+            telefones: telefones,
+            pets : pets
         }
-
-        fetch('http://localhost:32831/cliente/cadastrar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(cliente)
-        }).then(r=> {
-            alert(r.status === 200 ? 'Cliente criado com sucesso!' : 'Erro ao criar cliente.')
-            navigate('/')
+        console.log(cliente)
+        clienteService.createCliente(cliente).then(resp => {
+            console.log(resp.data)
+        }).catch(erro => {
+            console.log(erro)
         })
     }
 
     return (
-        // Acrescentado os campos que estavam faltando
         <div className="container-fluid">
-            <h3>Informações do cliente:</h3>
-            <div className="input-group mb-3">
-                <input 
-                    value={cliente.nome} 
-                    onChange={(e)=> setCliente({...cliente, nome: e.target.value})} 
-                    type="text" 
-                    className="form-control" 
-                    placeholder="Nome *" 
-                    aria-label="Nome" 
-                    aria-describedby="basic-addon1" />
-            </div>
-            <div className="input-group mb-3">
-                <input 
-                    value={cliente.nomeSocial} 
-                    onChange={(e)=> setCliente({...cliente, nomeSocial: e.target.value})} 
-                    type="text" 
-                    className="form-control" 
-                    placeholder="Nome social *" 
-                    aria-label="Nome social" 
-                    aria-describedby="basic-addon1" />
-            </div>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1" style={{ background: "#e3f2fd" }}>@</span>
-                <input 
-                    value={cliente.email} 
-                    onChange={(e)=> setCliente({...cliente, email: e.target.value})} 
-                    type="text" 
-                    className="form-control" 
-                    placeholder="E-mail *" 
-                    aria-label="E-mail" 
-                    aria-describedby="basic-addon1" />
-            </div>
-            <h4 className='mt-2'>Endereço:</h4>
-            <div className='m-4'>
+            <form>
+                <h3>Informações do cliente:</h3>
                 <div className="input-group mb-3">
-                    <input 
-                        value={cliente.endereco.codigoPostal} 
-                        onChange={(e)=> setCliente({...cliente, endereco: { ...cliente.endereco, codigoPostal: e.target.value + ''}})} 
-                        type="number" 
-                        className="form-control" 
-                        placeholder="Código Postal *" 
-                        aria-label="Código Postal" 
-                        aria-describedby="basic-addon1" />
+                    <input type="text" className="form-control" onChange={e => setNome(e.target.value)} placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon1" />
                 </div>
                 <div className="input-group mb-3">
-                    <input 
-                        value={cliente.endereco.rua} 
-                        onChange={(e)=> setCliente({...cliente, endereco: { ...cliente.endereco, rua: e.target.value}})} 
-                        type="text" 
-                        className="form-control" 
-                        placeholder="Rua *" 
-                        aria-label="Rua" 
-                        aria-describedby="basic-addon1" />
+                    <input type="text" className="form-control" onChange={e => setNomeSocial(e.target.value)} placeholder="Nome social" aria-label="Nome social" aria-describedby="basic-addon1" />
+                </div>
+                {/* Incluindo componentes de input para os campos cpf, telefone e RG. */}
+                <div className="input-group mb-3">
+                    <input type="text" className="form-control" onChange={e => setCpf(e.target.value)} placeholder="CPF" aria-label="CPF" aria-describedby="basic-addon1" />
+                    {/* <input type="date" className="form-control" placeholder="Data emissão CPF" aria-label="Data emissão CPF" aria-describedby="basic-addon1" /> */}
                 </div>
                 <div className="input-group mb-3">
-                    <input 
-                        value={cliente.endereco.numero} 
-                        onChange={(e)=> setCliente({...cliente, endereco: { ...cliente.endereco, numero: e.target.value + ''}})} 
-                        type="number" 
-                        className="form-control" 
-                        placeholder="Número *" 
-                        aria-label="Número" 
-                        aria-describedby="basic-addon1" />                    
-                </div>
-                <div className="input-group mb-3">
-                    <input 
-                        value={cliente.endereco.bairro} 
-                        onChange={(e)=> setCliente({...cliente, endereco: { ...cliente.endereco, bairro: e.target.value}})} 
-                        type="text" 
-                        className="form-control" 
-                        placeholder="Bairro *" 
-                        aria-label="Bairro" 
-                        aria-describedby="basic-addon1" />
-                </div>
-                <div className="input-group mb-3">
-                    <input 
-                        value={cliente.endereco.cidade} 
-                        onChange={(e)=> setCliente({...cliente, endereco: { ...cliente.endereco, cidade: e.target.value}})} 
-                        type="text" 
-                        className="form-control" 
-                        placeholder="Cidade *" 
-                        aria-label="Cidade" 
-                        aria-describedby="basic-addon1" />
-                </div>
-                <div className="input-group mb-3">
-                    <input 
-                        value={cliente.endereco.estado} 
-                        onChange={(e)=> setCliente({...cliente, endereco: { ...cliente.endereco, estado: e.target.value}})} 
-                        type="text" 
-                        className="form-control" 
-                        placeholder="Estado *" 
-                        aria-label="Estado" 
-                        aria-describedby="basic-addon1" />
-                </div>
-                <div className="input-group mb-3">
-                    <input 
-                        value={cliente.endereco.informacoesAdicionais} 
-                        onChange={(e)=> setCliente({...cliente, endereco: { ...cliente.endereco, informacoesAdicionais: e.target.value}})} 
-                        type="text" 
-                        className="form-control" 
-                        placeholder="Informações adicionais (Opcional)" 
-                        aria-label="Informações adicionais" 
-                        aria-describedby="basic-addon1" />
-                </div>
-            </div>
-            <h4 className='mt-2'>Telefones:</h4>
-            <div className='m-4'>
-                {cliente.telefones.map((tel, i) => (
-                    <div key={i} className="input-group mb-3">
-                        <input 
-                            value={tel.ddd} 
-                            onChange={(e)=> {
-                                const telefones = [...cliente.telefones]
-                                const tel = telefones[i]
-                                if(tel){
-                                    telefones[i].ddd = e.target.value + ''
-                                }
-                                setCliente({...cliente, telefones})
-                            }}
-                            type="number" 
-                            className="form-control" 
-                            placeholder="DDD *" 
-                            aria-label="DDD" 
-                            aria-describedby="basic-addon1" />
-                        <input 
-                            value={tel.numero} 
-                            onChange={(e)=> {
-                                const telefones = [...cliente.telefones]
-                                const tel = telefones[i]
-                                if(tel){
-                                    telefones[i].numero = e.target.value + ''
-                                }
-                                setCliente({...cliente, telefones})
-                            }}
-                            type="number" 
-                            className="form-control" 
-                            placeholder="Telefone *" 
-                            aria-label="Telefone" 
-                            aria-describedby="basic-addon1" />
+                    {/* Estrutura para exibir inputs para cada item do state de lista de RGs */}
+                    {rgs.map(rg => (
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control" onChange={e => setNumeroRg(e.target.value)} placeholder="RG" aria-label="RG" aria-describedby="basic-addon1" />
+                            <input type="date" className="form-control" onSelect={e => setDataEmissao(e.target.value)} placeholder="Data emissão RG" aria-label="Data emissão RG" aria-describedby="basic-addon1" />
+                        </div>
+                    ))}
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control" onChange={e => setNumeroRg(e.target.value)} placeholder="RG" aria-label="RG" aria-describedby="basic-addon1" />
+                        <input type="date" className="form-control" onSelect={e => setDataEmissao(e.target.value)} placeholder="Data emissão RG" aria-label="Data emissão RG" aria-describedby="basic-addon1" />
                     </div>
-                ))}
-                <button className='btn btn-sm btn-light' onClick={adicionarTelefone}>+ Adicionar Telefone</button>
-            </div>
-            <div className="input-group mb-3">
-                <button className="btn btn-outline-secondary" type="button" onClick={salvar} style={{ background: "#e3f2fd" }}>Cadastrar</button>
-            </div>
+                    {/* Propriedade 'onClick' para chamar uma função/método que será executado ao clicar neste componente  */}
+                    <button className='btn btn-sm btn-light' onClick={(e) => adicionarRG(e)}>+ Adicionar RG</button>
+                </div>
+                <div className="input-group mb-3">
+                    {/* Estrutura para exibir inputs para cada item do state de lista de Telefones */}
+                    {telefones.map(telefone => (
+                        <div className="input-group mb-3">
+                            <input value={telefone.ddd} type="text" className="form-control" placeholder="DDD" aria-label="DDD" aria-describedby="basic-addon1" />
+                            <input value={telefone.telefone} type="text" className="form-control" placeholder="Telefone" aria-label="Telefone" aria-describedby="basic-addon1" />
+                        </div>
+                    ))}
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control" onChange={e => setDdd(e.target.value)} placeholder="DDD" aria-label="DDD" aria-describedby="basic-addon1" />
+                        <input type="text" className="form-control" onChange={e => setTelefone(e.target.value)} placeholder="Telefone" aria-label="Telefone" aria-describedby="basic-addon1" />
+                    </div>
+                    {/* Propriedade 'onClick' para chamar uma função/método que será executado ao clicar neste componente  */}
+                    <button className='btn btn-sm btn-light' onClick={(e) => adicionarTelefone(e)}>+ Adicionar Telefone</button>
+                </div>
+                <h4>Pets:</h4>
+                <div className='m-5'>
+                    {pets.map((pet, index) => (
+                        <>
+                            <h5>{pet.nome.length === 0 ? 'Pet' : pet.nome}</h5>
+                            <div className="input-group mb-3 row">
+                                <input type="text" value={pet.nome} onChange={(e) => mudarNomePet(e.target.value, index)} className="form-control m-2 col" placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon1" />
+                                <input type="text" className="form-control m-2 col" placeholder="Raça" aria-label="Raça" aria-describedby="basic-addon1" />
+                                <input type="text" className="form-control m-2 col" placeholder="Tipo" aria-label="Tipo" aria-describedby="basic-addon1" />
+                                <input type="text" className="form-control m-2 col" placeholder="Gênero" aria-label="Gênero" aria-describedby="basic-addon1" />
+                            </div>
+                        </>
+                    ))}
+                    <div className="input-group mb-3 row">
+                        <input type="text" className="form-control m-2 col" onChange={e => setNomePet(e.target.value)} placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon1" />
+                        <input type="text" className="form-control m-2 col" onChange={e => setRaca(e.target.value)} placeholder="Raça" aria-label="Raça" aria-describedby="basic-addon1" />
+                        <input type="text" className="form-control m-2 col" onChange={e => setTipo(e.target.value)} placeholder="Tipo" aria-label="Tipo" aria-describedby="basic-addon1" />
+                        <input type="text" className="form-control m-2 col" onChange={e => setGeneroPet(e.target.value)} placeholder="Gênero" aria-label="Gênero" aria-describedby="basic-addon1" />
+                    </div>
+                    <button className='btn btn-sm btn-light' onClick={(e) => adicionarPet(e)}>+ Adicionar Pet</button>
+                </div>
+                <div className="input-group mb-3">
+                    <button onClick={() => criarCliente()} className="btn btn-outline-secondary" type="button" style={{ background: tema }}>Cadastrar</button>
+                </div>
+            </form>
         </div>
     )
 }

@@ -1,22 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-// Navigate serve para navegar entre paginas
-import { useNavigate } from "react-router-dom";
 
 export default function BarraNavegacao(props) {
-
-    // Declarando a função navigate
-    const navigate = useNavigate()
-
     const gerarListaBotoes = () => {
         if (props.botoes.length <= 0) {
             return <></>
         } else {
             let lista = props.botoes.map(valor =>
                 <li key={valor} className="nav-item">
-                    {/* Incluiu o navigate para navegar para pagina do botão */}
-                    <a className="nav-link" onClick={(e) =>  navigate('/' + valor)} style={{cursor: "pointer" }}>{valor}</a>
+                    <a className="nav-link" href="#" onClick={(e) => props.seletorView(valor, e)}>{valor}</a>
                 </li>
             )
             return lista

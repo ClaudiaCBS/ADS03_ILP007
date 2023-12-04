@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateProdutoDto } from './dto/create-produto.dto';
-import { UpdateProdutoDto } from './dto/update-produto.dto';
 import { Produto } from './entities/produto.entity';
-import { Repository } from 'typeorm';
+import { Repository } from 'typeorm/repository/Repository';
 
 @Injectable()
 export class ProdutoService {
@@ -22,7 +21,7 @@ export class ProdutoService {
     return await this.serviceProduto.findOne({where : {id : id}});
   }
 
-  async update(id: number, updateProdutoDto: UpdateProdutoDto) {
+  async update(id: number, updateProdutoDto: CreateProdutoDto) {
     return await this.serviceProduto.update(id, updateProdutoDto);
   }
 

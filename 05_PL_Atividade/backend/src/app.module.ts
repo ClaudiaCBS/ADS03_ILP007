@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ClienteModule } from './cliente/cliente.module';
-import { PetModule } from './pet/pet.module';
 import { ProdutoModule } from './produto/produto.module';
 import { ServicoModule } from './servico/servico.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -10,7 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
-  imports: [ClienteModule, PetModule, ProdutoModule, ServicoModule, 
+  imports: [ClienteModule, ProdutoModule, ServicoModule, ConfigModule.forRoot(), 
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,

@@ -4,6 +4,7 @@ export class CreateClienteDto {
     cpf : string
     rgs : Rg[]
     telefones : Telefone[]
+    pets : PetI[]
 }
 
 export class Rg {
@@ -14,4 +15,11 @@ export class Rg {
 export class Telefone {
     ddd: string
     telefone: string
+}
+
+export class PetI {
+    nome : string
+    raca : string
+    genero : string
+    tipo : string
 }
