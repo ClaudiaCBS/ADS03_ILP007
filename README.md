@@ -103,7 +103,7 @@ java -jar pl.jar
 Para rodar o front-end do programa deve usar os comandos: 
 
 ```cmd
-cd 05_PL_Atividade
+cd 05_PL_Atividade/frontend
 npm install
 npm run start
 ```
@@ -111,8 +111,19 @@ npm run start
 Para rodar o back-end do programa deve usar os comandos: 
 
 ```cmd
-cd 05_PL_Atividade\backend\executavel\
-java -jar pl.jar
+cd 05_PL_Atividade/backend
+npm install
+npm install --save @nestjs/typeorm typeorm pg
+npm run start
 ```
 
+Instale postgres e crie um banco de dados com nome "pl".
+Na pasta backend, crie um arquivo chamado ".env" e acrescente as seguintes informações:
 
+```cmd
+DB_HOST = localhost
+DB_PORT = 5432
+DB_USERNAME = postgres
+DB_PASSWORD = 1234
+DB_DATABASE = pl
+```
